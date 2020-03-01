@@ -1,24 +1,35 @@
 # sbt-scalajs-serverlessframework
 
-Deploys Scala.js code as an AWS Lambda function.
+Plugin for deploying Scala.js code as an AWS Lambda function.
 
 ## Usage
 
-This plugin requires sbt 1.0.0+
+This plugin requires sbt 1.0.0+.
 
-### Testing
+### Deploy
+```shell script
+$ sbt
+sbt> serverless deploy
+```
 
-Run `test` for regular unit tests.
+This plugin is just a thin wrapper of the serverless framework. Therefore, any arguments the serverless command accepts are available. (So, if you perform tasks other than Scala.js deployment, you can do it.)
+After the Scala code is compiled into JavaScript, it is copied to the following directory along with the serverless framework configuration file.
+This plugin just execute the serverless command in this directory after compiling Scala.js.
 
-Run `scripted` for [sbt script tests](http://www.scala-sbt.org/1.x/docs/Testing-sbt-plugins.html).
+```shell script
+.
+|-- build.sbt
+|-- handler.js
+|-- src
+|   `-- main
+|       `-- scala
+|           `-- Handler.scala
+`-- target
+    `-- lambda
+        |-- example-fastopt.js
+        |-- handler.js
+        `-- serverless.yml
 
-### Publishing
+# target/lambda is the working directory for serverless command.
+```
 
-1. publish your source to GitHub
-2. [create a bintray account](https://bintray.com/signup/index) and [set up bintray credentials](https://github.com/sbt/sbt-bintray#publishing)
-3. create a bintray repository `sbt-plugins` 
-4. update your bintray publishing settings in `build.sbt`
-5. `sbt publish`
-6. [request inclusion in sbt-plugin-releases](https://bintray.com/sbt/sbt-plugin-releases)
-7. [Add your plugin to the community plugins list](https://github.com/sbt/website#attention-plugin-authors)
-8. [Claim your project an Scaladex](https://github.com/scalacenter/scaladex-contrib#claim-your-project)
