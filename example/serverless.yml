@@ -1,0 +1,10 @@
+service: helloworld
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ap-northeast-1
+functions:
+  foo:
+    handler: handler.foo
+  bar:
+    handler: handler.bar
