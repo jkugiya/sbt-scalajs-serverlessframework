@@ -6,6 +6,13 @@ Plugin for deploying Scala.js code as an AWS Lambda function.
 
 This plugin requires sbt 1.0.0+.
 
+### Addng Plugin
+
+```
+resolvers += Resolver.bintrayIvyRepo("jkugiya", "sbt-scalajs-serverlessframework")
+addSbtPlugin("jkugiya" % "sbt-scalajs-serverlessframework" % "0.1")
+```
+
 ### Deploy
 ```shell script
 $ sbt

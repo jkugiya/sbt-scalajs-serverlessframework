@@ -1,5 +1,5 @@
 val PluginOrg = "jkugiya"
-val PluginName = "sbt-scalajs-serverless-framework"
+val PluginName = "sbt-scalajs-serverlessframework"
 val PluginVersion = "0.1"
 
 lazy val root =
@@ -18,6 +18,8 @@ lazy val root =
           )
         ),
         scriptedLaunchOpts ++=
-          Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
+          Seq("-Xmx1024M", "-Dplugin.version=" + version.value),
+        publishMavenStyle := false,
+        bintrayRepository := "sbt-scalajs-serverlessframework",
       )
     .enablePlugins(ScriptedPlugin)
